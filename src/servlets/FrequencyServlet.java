@@ -1,11 +1,15 @@
 package servlets;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,16 +18,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import dao.TextDao;
+import dao.WordDao;
+
 public class FrequencyServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
 	  	
 		BufferedReader br = request.getReader();
+		String texte = "";
 		String line = br.readLine();
 		List<String> words = new ArrayList<String>();
 		HashMap<String, Integer> frequency = new HashMap<String, Integer>();
 		
 		while (line!=null) {
+			texte+=line;
 			line = cleansing(line);
 			words.addAll(Arrays.asList(line.split(" ")));
 			line = br.readLine();
@@ -34,7 +43,18 @@ public class FrequencyServlet extends HttpServlet {
 			int count = frequency.get(word);
 			frequency.put(word,count+1);
 		}
+		frequency.remove("");
 		
+		try(TextDao textDao = TextDao.getInstance();
+		WordDao wordDao = WordDao.getInstance();){
+			
+			String textId = TextDao.getInstance().save(texte);
+			
+			for (Entry<String, Integer> entry : frequency.entrySet()) {
+				WordDao.getInstance().ajout(textId, entry.getKey(), entry.getValue());
+			}
+		
+		}
 		
 		response.setContentType( "application/json" );
 		response.setCharacterEncoding("UTF-8");
@@ -47,7 +67,7 @@ public class FrequencyServlet extends HttpServlet {
 	
 	private String cleansing(String line) {
 		String result = line.toLowerCase();
-		result=line.replaceAll("[^a-zA-ZÀ-ÿ]", " ");
+		result=result.replaceAll("[^a-zA-ZÀ-ÿ]", " ");
 		return result;
 	}
 
