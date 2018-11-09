@@ -1,0 +1,1 @@
+Ici nous modifions la mapping de l'URL pour accepter toutes les requêtes
