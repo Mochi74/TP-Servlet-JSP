@@ -7,6 +7,10 @@
  <servlet-name>random</servlet-name>  
  <servlet-class>servlets.RandomServlet</servlet-class>  
  </servlet>
+ <servlet>  
+ <servlet-name>frequency</servlet-name>  
+ <servlet-class>servlets.FrequencyServlet</servlet-class>  
+ </servlet>
   
  <servlet-mapping>  
  <servlet-name>hello</servlet-name>  
@@ -15,5 +19,9 @@
  <servlet-mapping>  
  <servlet-name>random</servlet-name>  
  <url-pattern>/random</url-pattern>  
+ </servlet-mapping>  
+  <servlet-mapping>  
+ <servlet-name>frequency</servlet-name>  
+ <url-pattern>/frequency</url-pattern>  
  </servlet-mapping>  
 </web-app> 
