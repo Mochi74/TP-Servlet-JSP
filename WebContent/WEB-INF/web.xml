@@ -13,6 +13,20 @@
 		<servlet-name>frequency</servlet-name>
 		<servlet-class>servlets.FrequencyServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>stat</display-name>
+		<servlet-name>stat</servlet-name>
+		<servlet-class>servlets.ReceiveStat</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>GetStat</display-name>
+		<servlet-name>GetStat</servlet-name>
+		<servlet-class>servlets.GetStat</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
@@ -25,6 +39,14 @@
 	<servlet-mapping>
 		<servlet-name>frequency</servlet-name>
 		<url-pattern>/frequency</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>stat</servlet-name>
+		<url-pattern>/stat</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetStat</servlet-name>
+		<url-pattern>/GetStat/*</url-pattern>
 	</servlet-mapping>
 
 </web-app> 

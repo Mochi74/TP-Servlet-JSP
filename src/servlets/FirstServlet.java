@@ -20,7 +20,7 @@ public class FirstServlet extends HttpServlet {
 	    out.println( "<TITLE>Page generee par une servlet</TITLE>" );
 	    out.println( "</HEAD>" );
 	    out.println( "<BODY>" );
-	    out.println( "<H1>Bonjour "+lastElement+"</H1>" );
+	    out.println( "<H1>Bonjour toi "+lastElement+"</H1>" );
 	    out.println( "</BODY>" );
 	    out.println( "</HTML>" );
 	    out.close();
