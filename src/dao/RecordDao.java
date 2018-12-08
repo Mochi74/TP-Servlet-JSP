@@ -1,7 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -62,7 +60,7 @@ public class RecordDao extends DaoConnection {
 		String id = UUID.randomUUID().toString()+"-"+System.currentTimeMillis();
 		try {
 			PreparedStatement p = this.c.prepareStatement("INSERT INTO textes (id,date,ip,pays,browser) VALUES (?,?,?,?,?)");
-			p.setString(1,id);
+			p.setString(1,id); 
 			Date now = new Date();
 			formater = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 			

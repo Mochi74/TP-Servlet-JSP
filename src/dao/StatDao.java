@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,15 +7,12 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.UUID;
 
 import model.Distribution;
-import model.Record;
-import model.Texte;
 
 
 public class StatDao extends DaoConnection {
@@ -39,35 +35,7 @@ public class StatDao extends DaoConnection {
 	}
 	
 	
-/*	chart.data = [{
-		  "country": "Lithuania",
-		  "litres": 501.9
-		}, {
-		  "country": "Czech Republic",
-		  "litres": 301.9
-		}, {
-		  "country": "Ireland",
-		  "litres": 201.1
-		}, {
-		  "country": "Germany",
-		  "litres": 165.8
-		}, {
-		  "country": "Australia",
-		  "litres": 139.9
-		}, {
-		  "country": "Austria",
-		  "litres": 128.3
-		}, {
-		  "country": "UK",
-		  "litres": 99
-		}, {
-		  "country": "Belgium",
-		  "litres": 60
-		}, {
-		  "country": "The Netherlands",
-		  "litres": 50
-		}];
-*/	
+
 	
 	
 	public ArrayList<Distribution> allByCountry(){
@@ -123,7 +91,7 @@ public class StatDao extends DaoConnection {
 		try {
 			
 		PreparedStatement p;
-		p = this.c.prepareStatement("SELECT dayofweek(date) as day,count(*) as visit FROM `textes` WHERE 1 group by dayofweek(date)");
+		p = this.c.prepareStatement("SELECT dayname(date) as day,count(*) as visit FROM `textes` WHERE 1 group by dayofweek(date)");
 		
 		ResultSet rs = p.executeQuery();	
 			while(rs.next()) {

@@ -7,20 +7,21 @@
 <script src="https://www.amcharts.com/lib/4/core.js"></script>
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 
 <body>
 <div>
-	<div style="width: 50%; height: 300px; float: left">
+	<div class="left">
 		<H1>Visit per Country</H1>
 			<div id=chartdivCountry></div>
 	</div>
-	<div style="margin-left: 50%; height: 300px;">
+	<div class="right">
 		<H1>Visit per Browser</H1>
 			<div id=chartdivBrowser></div>
 	</div>
-<div style="width: 100%; height: 500px; float: left" >
+<div style="width: 100%;  float: left;" >
 		<H1>Visit per day of week</H1>
-			<div id=chartdivDay></div>
+			<div id=chartdivDay style="height:500px;"></div>
 </div>
 </div>
 
@@ -39,9 +40,9 @@ chartPerCountry.innerRadius = am4core.percent(40);
 chartPerBrowser.innerRadius = am4core.percent(10);
 
 
-chartPerCountry.dataSource.url = "http://localhost:8080/TP-Servlet-JSP/GetStat/country";
-chartPerBrowser.dataSource.url = "http://localhost:8080/TP-Servlet-JSP/GetStat/browser";
-chartPerDay.dataSource.url = "http://localhost:8080/TP-Servlet-JSP/GetStat/day";
+chartPerCountry.dataSource.url = "./GetStat/country";
+chartPerBrowser.dataSource.url = "./GetStat/browser";
+chartPerDay.dataSource.url = "./GetStat/day";
 
 
 // Add and configure Series per Country
