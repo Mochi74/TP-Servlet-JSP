@@ -17,7 +17,7 @@ public class FirstServlet extends HttpServlet {
 	    PrintWriter out = response.getWriter();
 	    out.println( "<HTML>" );
 	    out.println( "<HEAD>");
-	    out.println( "<TITLE>Page generee par une servlet</TITLE>" );
+	    out.println( "<TITLE>Page generee par une servlet et quel servlet</TITLE>" );
 	    out.println( "</HEAD>" );
 	    out.println( "<BODY>" );
 	    out.println( "<H1>Bonjour toi "+lastElement+"</H1>" );
